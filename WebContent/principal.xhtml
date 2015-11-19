@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Hello JSF!</title>
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/default.css" />
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="50" class="classtop">
+
+		</p:layoutUnit>
+		<p:layoutUnit position="south" size="100">
+			<center>
+				<p:graphicImage value="#{hello.logo}" width="5%" height="50px" />
+			</center>
+			<center>
+				<h:outputText
+					value="Copyright © - 2015 - Todos os direitos reservados."
+					style="font-size: 75%" />
+			</center>
+		</p:layoutUnit>
+		<p:layoutUnit position="west" size="300">
+			<h:form>
+				<p:menu style="width:95%; height:100%;">
+					<p:submenu label="Home">
+						<p:menuitem value="Inicial" outcome="principal.xhtml"
+							icon="ui-icon-home" />
+					</p:submenu>
+					<p:submenu label="Sessão">
+						<p:menuitem value="Visualizar" outcome="visualizar.xhtml"
+							icon="ui-icon-search" />
+						<p:menuitem value="Criar" outcome="criar.xhtml"
+							icon="ui-icon-circle-plus" />
+					</p:submenu>
+					<p:submenu label="Conta">
+						<p:menuitem value="Alterar Perfil"
+							outcome="perfil.xhtml" icon="ui-icon-person" />
+						<p:menuitem value="Configurações"
+							outcome="configuracoes.xhtml" icon="ui-icon-gear" />
+					</p:submenu>
+					<p:submenu label="Logout">
+						<p:menuitem value="Sair" actionListener="#{menuView.save}"
+							icon="ui-icon-power" />
+					</p:submenu>
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+		<p:layoutUnit position="east" size="200">
+			<h:outputText value="Right Content" />
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<center>
+				<h3>Brain Corp</h3>
+			</center>
+			<p:panel id="basic" header="Descrição do Sistema"
+				style="margin-bottom:20px">
+				<p align="justify">As empresas da atualidade seguem a tendência
+					de modernização da dinâmica de comunicação entre seus
+					colaboradores, através de diversas tecnologias e técnicas. Isso
+					devido à grande concorrência de mercado. Assim, para que uma
+					empresa se destaque é preciso que ela tenha uma forma eficiente,
+					simples e centralizada de estabelecer essas comunicações. O sistema
+					proposto visa suprir essa necessidade, oferecendo uma plataforma
+					para criação de brainstorming.</p>
+			</p:panel>
+			<h:form>
+				<p:fieldset legend="Sessões recentes" toggleable="true"
+					toggleSpeed="500">
+					<h:panelGrid columns="2" cellpadding="5">
+						<p align="justify">
+							Francis Ford Coppola's legendary continuation and sequel to his
+							landmark 1972 film, The_Godfather, parallels the young Vito
+							Corleone's rise with his son Michael's spiritual fall, deepening
+							The_Godfather's depiction of the dark side of the American dream.
+							In the early 1900s, the child Vito flees his Sicilian village for
+							America after the local Mafia kills his family. Vito struggles to
+							make a living, legally or illegally, for his wife and growing
+							brood in Little Italy, killing the local Black Hand Fanucci after
+							he demands his customary cut of the tyro's business. With Fanucci
+							gone, Vito's communal stature grows.
+						</p>
+					</h:panelGrid>
+				</p:fieldset>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

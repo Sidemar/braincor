@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Hello JSF!</title>
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/default.css" />
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="50" class="classtop">
+
+		</p:layoutUnit>
+		<p:layoutUnit position="south" size="100">
+			<center>
+				<p:graphicImage value="#{hello.logo}" width="5%" height="50px" />
+			</center>
+			<center>
+				<h:outputText
+					value="Copyright © - 2015 - Todos os direitos reservados."
+					style="font-size: 75%" />
+			</center>
+		</p:layoutUnit>
+		<p:layoutUnit position="west" size="300">
+			<h:form>
+				<p:menu style="width:95%; height:100%;">
+					<p:submenu label="Home">
+						<p:menuitem value="Inicial" outcome="principal.xhtml"
+							icon="ui-icon-home" />
+					</p:submenu>
+					<p:submenu label="Sessão">
+						<p:menuitem value="Visualizar" outcome="visualizar.xhtml"
+							icon="ui-icon-search" />
+						<p:menuitem value="Criar" outcome="criar.xhtml"
+							icon="ui-icon-circle-plus" />
+					</p:submenu>
+					<p:submenu label="Conta">
+						<p:menuitem value="Alterar Perfil" outcome="perfil.xhtml"
+							icon="ui-icon-person" />
+						<p:menuitem value="Configurações" outcome="configuracoes.xhtml"
+							icon="ui-icon-gear" />
+					</p:submenu>
+					<p:submenu label="Logout">
+						<p:menuitem value="Sair" actionListener="#{menuView.save}"
+							icon="ui-icon-power" />
+					</p:submenu>
+				</p:menu>
+
+			</h:form>
+		</p:layoutUnit>
+		<p:layoutUnit position="east" size="200">
+			<h:outputText value="Right Content" />
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<center>
+				<h3>Visualizar</h3>
+			</center>
+			<h:form id="form">
+				<p:dataList value="#{hello.sessoes}" var="sessao" type="unordered" 
+					itemType="none" paginator="true" rows="10" styleClass="paginated" >
+					<f:facet name="header">Histórico</f:facet>
+					<p:commandLink update=":form:sessaoDetail"
+						oncomplete="PF('sessaoDialog').show()" title="Visualizar Detalhes"
+						styleClass="ui-icon ui-icon-search"
+						style="float:left;margin-right:10px">
+						<f:setPropertyActionListener value="#{sessao}"
+							target="#{hello.selectedSessao}" />
+						<h:outputText value="#{sessao.id}, #{sessao.quantidade}" />
+					</p:commandLink>
+					<h:outputText value="#{sessao.id}, #{sessao.quantidade}"
+						style="display:inline-block" />
+				</p:dataList>
+
+				<p:dialog header="Detalhes da sessão" widgetVar="sessaoDialog" modal="true"
+					appendTo="@(body)" showEffect="blind" hideEffect="explode" resizable="false">
+					<p:outputPanel id="sessaoDetail" style="text-align:center;">
+						<p:panelGrid columns="2"
+							rendered="#{not empty hello.selectedSessao}"
+							columnClasses="label,value">
+							<h:outputText value="Id:" />
+							<h:outputText value="#{hello.selectedSessao.id}" />
+
+							<h:outputText value="Quantidade" />
+							<h:outputText value="#{hello.selectedSessao.quantidade}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>
